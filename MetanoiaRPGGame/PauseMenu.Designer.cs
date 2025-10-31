@@ -1,0 +1,91 @@
+﻿namespace MetanoiaRPGGame
+{
+    partial class FormPauseMenu
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPauseMenu));
+            MainMenubutton = new Button();
+            Resumebutton = new Button();
+            PauseMenuLabel = new Label();
+            SuspendLayout();
+            // 
+            // MainMenubutton
+            // 
+            MainMenubutton.Font = new Font("Showcard Gothic", 15.75F);
+            MainMenubutton.Location = new Point(318, 327);
+            MainMenubutton.Name = "MainMenubutton";
+            MainMenubutton.Size = new Size(309, 68);
+            MainMenubutton.TabIndex = 2;
+            MainMenubutton.Text = "Main Menu";
+            MainMenubutton.UseVisualStyleBackColor = true;
+            MainMenubutton.Click += MainMenubutton_Click;
+            // 
+            // Resumebutton
+            // 
+            Resumebutton.Font = new Font("Showcard Gothic", 15.75F);
+            Resumebutton.Location = new Point(318, 212);
+            Resumebutton.Name = "Resumebutton";
+            Resumebutton.Size = new Size(309, 69);
+            Resumebutton.TabIndex = 0;
+            Resumebutton.Text = "Resume";
+            Resumebutton.UseVisualStyleBackColor = true;
+            Resumebutton.Click += Resumebutton_Click;
+            // 
+            // PauseMenuLabel
+            // 
+            PauseMenuLabel.AutoSize = true;
+            PauseMenuLabel.BackColor = Color.Transparent;
+            PauseMenuLabel.Font = new Font("Showcard Gothic", 56.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            PauseMenuLabel.Location = new Point(224, 67);
+            PauseMenuLabel.Name = "PauseMenuLabel";
+            PauseMenuLabel.Size = new Size(496, 93);
+            PauseMenuLabel.TabIndex = 3;
+            PauseMenuLabel.Text = "Pause Menu";
+            // 
+            // FormPauseMenu
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(958, 509);
+            Controls.Add(PauseMenuLabel);
+            Controls.Add(MainMenubutton);
+            Controls.Add(Resumebutton);
+            Name = "FormPauseMenu";
+            Text = "Form3";
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+        private Button MainMenubutton;
+        private Button Resumebutton;
+        private Label PauseMenuLabel;
+    }
+}
