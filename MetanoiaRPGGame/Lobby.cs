@@ -9,10 +9,11 @@ namespace MetanoiaRPGGame
 
         private void Startbutton_Click(object sender, EventArgs e)
         {
-            FormStoryMode story = new FormStoryMode();
+            FormCharacterSelection story = new FormCharacterSelection();
             story.Show();
 
-            this.Close();
+            this.Hide();
+
         }
     }
 }
