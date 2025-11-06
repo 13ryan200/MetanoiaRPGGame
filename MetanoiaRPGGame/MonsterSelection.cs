@@ -5,15 +5,14 @@ namespace MetanoiaRPGGame
 {
     public partial class FormMonsterSelection : Form
     {
-        private Character selectedCharacter = new Character();
-        private Monster selectedMonster = new Monster();
+        private Character selectedCharacter; 
+        private Monster selectedMonster;
 
         private Monster cerberus = new Monster() { Name = "Cerberus", HP = 80, Attack = 15 };
         private Monster dragon = new Monster() { Name = "Dragon", HP = 150, Attack = 30 };
         private Monster serpent = new Monster() { Name = "Serpent", HP = 60, Attack = 10 };
 
         public string SelectedMonster { get; private set; } = string.Empty;
-        public string SelectedCharacter { get; }
 
         public FormMonsterSelection(Character selectedCharacter)
         {
@@ -21,12 +20,7 @@ namespace MetanoiaRPGGame
             this.selectedCharacter = selectedCharacter;
         }
 
-        public FormMonsterSelection(string selectedCharacter1)
-        {
-            SelectedCharacter = selectedCharacter1;
-        }
-
-        private void Character_Click(object sender, EventArgs e)
+        private void Monster_Click(object sender, EventArgs e)
         {
             PictureBox clicked = (PictureBox)sender;
 

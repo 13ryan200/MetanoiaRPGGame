@@ -29,28 +29,38 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCharacterSelection));
+            labelCharacterSelection = new Label();
             Nextbutton = new Button();
             picKnight = new PictureBox();
-            picPriest = new PictureBox();
-            picMage = new PictureBox();
-            label1 = new Label();
             rdoKnight = new RadioButton();
             rdoPriest = new RadioButton();
+            picPriest = new PictureBox();
             rdoMage = new RadioButton();
+            picMage = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picKnight).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picPriest).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMage).BeginInit();
             SuspendLayout();
             // 
+            // labelCharacterSelection
+            // 
+            labelCharacterSelection.AutoSize = true;
+            labelCharacterSelection.BackColor = Color.Transparent;
+            labelCharacterSelection.Font = new Font("Showcard Gothic", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelCharacterSelection.Location = new Point(218, 35);
+            labelCharacterSelection.Name = "labelCharacterSelection";
+            labelCharacterSelection.Size = new Size(493, 46);
+            labelCharacterSelection.TabIndex = 0;
+            labelCharacterSelection.Text = "Choose your Character";
+            // 
             // Nextbutton
             // 
             Nextbutton.BackColor = Color.Transparent;
-            Nextbutton.BackgroundImageLayout = ImageLayout.Stretch;
-            Nextbutton.Font = new Font("Showcard Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Nextbutton.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Nextbutton.Image = (Image)resources.GetObject("Nextbutton.Image");
-            Nextbutton.Location = new Point(391, 434);
+            Nextbutton.Location = new Point(376, 418);
             Nextbutton.Name = "Nextbutton";
-            Nextbutton.Size = new Size(143, 60);
+            Nextbutton.Size = new Size(218, 50);
             Nextbutton.TabIndex = 1;
             Nextbutton.Text = "Next";
             Nextbutton.UseVisualStyleBackColor = false;
@@ -59,70 +69,23 @@
             // picKnight
             // 
             picKnight.BackColor = Color.Transparent;
-            picKnight.BackgroundImageLayout = ImageLayout.Zoom;
-            picKnight.ErrorImage = null;
             picKnight.Image = (Image)resources.GetObject("picKnight.Image");
-            picKnight.ImageLocation = "";
-            picKnight.InitialImage = null;
-            picKnight.Location = new Point(133, 130);
+            picKnight.Location = new Point(109, 116);
             picKnight.Name = "picKnight";
-            picKnight.Size = new Size(182, 237);
-            picKnight.SizeMode = PictureBoxSizeMode.Zoom;
+            picKnight.Size = new Size(188, 237);
+            picKnight.SizeMode = PictureBoxSizeMode.StretchImage;
             picKnight.TabIndex = 2;
             picKnight.TabStop = false;
-            picKnight.Click += Character_Click;
-            // 
-            // picPriest
-            // 
-            picPriest.BackColor = Color.Transparent;
-            picPriest.BackgroundImageLayout = ImageLayout.Zoom;
-            picPriest.ErrorImage = null;
-            picPriest.Image = (Image)resources.GetObject("picPriest.Image");
-            picPriest.InitialImage = null;
-            picPriest.Location = new Point(377, 130);
-            picPriest.Name = "picPriest";
-            picPriest.Size = new Size(182, 237);
-            picPriest.SizeMode = PictureBoxSizeMode.StretchImage;
-            picPriest.TabIndex = 3;
-            picPriest.TabStop = false;
-            picPriest.Click += Character_Click;
-            // 
-            // picMage
-            // 
-            picMage.BackColor = Color.Transparent;
-            picMage.BackgroundImageLayout = ImageLayout.Zoom;
-            picMage.ErrorImage = null;
-            picMage.Image = (Image)resources.GetObject("picMage.Image");
-            picMage.InitialImage = null;
-            picMage.Location = new Point(624, 130);
-            picMage.Name = "picMage";
-            picMage.Size = new Size(182, 237);
-            picMage.SizeMode = PictureBoxSizeMode.StretchImage;
-            picMage.TabIndex = 4;
-            picMage.TabStop = false;
-            picMage.Click += Character_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Showcard Gothic", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ControlText;
-            label1.Location = new Point(214, 36);
-            label1.Name = "label1";
-            label1.Size = new Size(493, 46);
-            label1.TabIndex = 5;
-            label1.Text = "Choose Your Character";
             // 
             // rdoKnight
             // 
             rdoKnight.AutoSize = true;
             rdoKnight.BackColor = Color.Transparent;
-            rdoKnight.Font = new Font("Showcard Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdoKnight.Location = new Point(173, 382);
+            rdoKnight.Font = new Font("Showcard Gothic", 15.75F);
+            rdoKnight.Location = new Point(164, 359);
             rdoKnight.Name = "rdoKnight";
-            rdoKnight.Size = new Size(102, 27);
-            rdoKnight.TabIndex = 6;
+            rdoKnight.Size = new Size(108, 31);
+            rdoKnight.TabIndex = 3;
             rdoKnight.TabStop = true;
             rdoKnight.Text = "Knight";
             rdoKnight.UseVisualStyleBackColor = false;
@@ -131,27 +94,49 @@
             // 
             rdoPriest.AutoSize = true;
             rdoPriest.BackColor = Color.Transparent;
-            rdoPriest.Font = new Font("Showcard Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdoPriest.Location = new Point(423, 382);
+            rdoPriest.Font = new Font("Showcard Gothic", 15.75F);
+            rdoPriest.Location = new Point(433, 359);
             rdoPriest.Name = "rdoPriest";
-            rdoPriest.Size = new Size(95, 27);
-            rdoPriest.TabIndex = 7;
+            rdoPriest.Size = new Size(101, 31);
+            rdoPriest.TabIndex = 5;
             rdoPriest.TabStop = true;
             rdoPriest.Text = "Priest";
             rdoPriest.UseVisualStyleBackColor = false;
+            // 
+            // picPriest
+            // 
+            picPriest.BackColor = Color.Transparent;
+            picPriest.Image = (Image)resources.GetObject("picPriest.Image");
+            picPriest.Location = new Point(387, 118);
+            picPriest.Name = "picPriest";
+            picPriest.Size = new Size(188, 237);
+            picPriest.SizeMode = PictureBoxSizeMode.StretchImage;
+            picPriest.TabIndex = 4;
+            picPriest.TabStop = false;
             // 
             // rdoMage
             // 
             rdoMage.AutoSize = true;
             rdoMage.BackColor = Color.Transparent;
-            rdoMage.Font = new Font("Showcard Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdoMage.Location = new Point(676, 382);
+            rdoMage.Font = new Font("Showcard Gothic", 15.75F);
+            rdoMage.Location = new Point(710, 359);
             rdoMage.Name = "rdoMage";
-            rdoMage.Size = new Size(79, 27);
-            rdoMage.TabIndex = 8;
+            rdoMage.Size = new Size(88, 31);
+            rdoMage.TabIndex = 7;
             rdoMage.TabStop = true;
             rdoMage.Text = "Mage";
             rdoMage.UseVisualStyleBackColor = false;
+            // 
+            // picMage
+            // 
+            picMage.BackColor = Color.Transparent;
+            picMage.Image = (Image)resources.GetObject("picMage.Image");
+            picMage.Location = new Point(657, 116);
+            picMage.Name = "picMage";
+            picMage.Size = new Size(188, 237);
+            picMage.SizeMode = PictureBoxSizeMode.StretchImage;
+            picMage.TabIndex = 6;
+            picMage.TabStop = false;
             // 
             // FormCharacterSelection
             // 
@@ -159,17 +144,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(944, 539);
+            ClientSize = new Size(962, 508);
             Controls.Add(rdoMage);
-            Controls.Add(rdoPriest);
-            Controls.Add(rdoKnight);
-            Controls.Add(label1);
             Controls.Add(picMage);
+            Controls.Add(rdoPriest);
             Controls.Add(picPriest);
+            Controls.Add(rdoKnight);
+            Controls.Add(labelCharacterSelection);
             Controls.Add(picKnight);
             Controls.Add(Nextbutton);
             Name = "FormCharacterSelection";
-            Text = "Choose your character";
+            Text = "CharacterSelection";
             ((System.ComponentModel.ISupportInitialize)picKnight).EndInit();
             ((System.ComponentModel.ISupportInitialize)picPriest).EndInit();
             ((System.ComponentModel.ISupportInitialize)picMage).EndInit();
@@ -178,13 +163,14 @@
         }
 
         #endregion
+
+        private Label labelCharacterSelection;
         private Button Nextbutton;
         private PictureBox picKnight;
-        private PictureBox picPriest;
-        private PictureBox picMage;
-        private Label label1;
         private RadioButton rdoKnight;
         private RadioButton rdoPriest;
+        private PictureBox picPriest;
         private RadioButton rdoMage;
+        private PictureBox picMage;
     }
 }

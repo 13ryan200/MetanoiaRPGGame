@@ -5,9 +5,15 @@ namespace MetanoiaRPGGame
     public class Character
     {
         public string Name { get; set; } = string.Empty;
+        public int Level { get; set; } = 1;
+        public int XP { get; set; } = 0;
+        public int XPToNextLevel { get; set; } = 100;
+
         public int HP { get; set; }
         public int Attack { get; set; }
         public int SpecialAttack { get; set; }
+        public int Defense { get; set; }
+        public int Stamina { get; set; }
         public int Mana { get; set; } = 0;
         public int MaxMana { get; set; } = 100;
 
@@ -24,12 +30,27 @@ namespace MetanoiaRPGGame
             Mana = 0;
         }
 
-        public override string ToString()
+        public void GainXP(int amount)
         {
-            return $"Name: {Name}\n" +
-                   $"HP: {HP}\n" +
-                   $"Attack: {Attack}\n" +
-                   $"Special Attack: {SpecialAttack}";
+            XP += amount;
+            if (XP >= XPToNextLevel)
+            {
+                LevelUp();
+            }
+        }
+
+        public void LevelUp()
+        {
+            XP -= XPToNextLevel;
+            XPToNextLevel += 50; // harder each level
+
+            Level++;
+            HP += 20;
+            Attack += 5;
+            SpecialAttack += 5;
+
+            // restore HP and Mana
+            Mana = 0;
         }
     }
 }

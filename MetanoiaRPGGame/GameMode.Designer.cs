@@ -30,19 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGameMode));
             PauseButton = new Button();
-            buttonSpecialAttack = new Button();
-            buttonAttack = new Button();
+            btnAttack = new Button();
+            btnSpecial = new Button();
             labelMana = new Label();
+            picPlayer = new PictureBox();
+            picMonster = new PictureBox();
+            pbarPlayerMana = new ProgressBar();
+            pbarPlayerHP = new ProgressBar();
+            pbarMonsterHP = new ProgressBar();
             labelBattleLog = new Label();
             labelPlayerName = new Label();
             labelMonsterName = new Label();
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pbarPlayerHP = new ProgressBar();
-            pbarMonsterHP = new ProgressBar();
-            pbarPlayerMana = new ProgressBar();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picPlayer).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picMonster).BeginInit();
             SuspendLayout();
             // 
             // PauseButton
@@ -52,122 +52,124 @@
             PauseButton.BackgroundImageLayout = ImageLayout.Stretch;
             PauseButton.Location = new Point(12, 12);
             PauseButton.Name = "PauseButton";
-            PauseButton.Size = new Size(29, 32);
+            PauseButton.Size = new Size(42, 40);
             PauseButton.TabIndex = 1;
             PauseButton.UseVisualStyleBackColor = false;
             PauseButton.Click += PauseButton_Click;
             // 
-            // buttonSpecialAttack
+            // btnAttack
             // 
-            buttonSpecialAttack.BackColor = Color.DarkGray;
-            buttonSpecialAttack.FlatStyle = FlatStyle.Popup;
-            buttonSpecialAttack.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonSpecialAttack.Location = new Point(356, 457);
-            buttonSpecialAttack.Name = "buttonSpecialAttack";
-            buttonSpecialAttack.Size = new Size(117, 39);
-            buttonSpecialAttack.TabIndex = 2;
-            buttonSpecialAttack.Text = "Special 💥";
-            buttonSpecialAttack.UseVisualStyleBackColor = false;
+            btnAttack.BackColor = Color.Transparent;
+            btnAttack.BackgroundImageLayout = ImageLayout.Stretch;
+            btnAttack.Font = new Font("Showcard Gothic", 18F);
+            btnAttack.Image = (Image)resources.GetObject("btnAttack.Image");
+            btnAttack.Location = new Point(246, 458);
+            btnAttack.Name = "btnAttack";
+            btnAttack.Size = new Size(184, 40);
+            btnAttack.TabIndex = 2;
+            btnAttack.Text = "Attack ⚔️";
+            btnAttack.UseVisualStyleBackColor = false;
             // 
-            // buttonAttack
+            // btnSpecial
             // 
-            buttonAttack.BackColor = Color.DarkGray;
-            buttonAttack.FlatStyle = FlatStyle.Popup;
-            buttonAttack.Font = new Font("Showcard Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonAttack.ForeColor = Color.Black;
-            buttonAttack.Location = new Point(491, 458);
-            buttonAttack.Name = "buttonAttack";
-            buttonAttack.Size = new Size(117, 39);
-            buttonAttack.TabIndex = 3;
-            buttonAttack.Text = "Attack ⚔️";
-            buttonAttack.UseVisualStyleBackColor = false;
+            btnSpecial.BackColor = Color.Transparent;
+            btnSpecial.BackgroundImageLayout = ImageLayout.Stretch;
+            btnSpecial.Font = new Font("Showcard Gothic", 18F);
+            btnSpecial.Image = (Image)resources.GetObject("btnSpecial.Image");
+            btnSpecial.Location = new Point(23, 458);
+            btnSpecial.Name = "btnSpecial";
+            btnSpecial.Size = new Size(184, 40);
+            btnSpecial.TabIndex = 3;
+            btnSpecial.Text = "Special 💥";
+            btnSpecial.UseVisualStyleBackColor = false;
+            btnSpecial.Click += btnSpecial_Click;
             // 
             // labelMana
             // 
             labelMana.AutoSize = true;
-            labelMana.BackColor = Color.Silver;
-            labelMana.Font = new Font("Showcard Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelMana.Location = new Point(47, 421);
+            labelMana.BackColor = Color.Transparent;
+            labelMana.Font = new Font("Showcard Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelMana.Location = new Point(26, 411);
             labelMana.Name = "labelMana";
-            labelMana.Size = new Size(122, 27);
+            labelMana.Size = new Size(140, 30);
             labelMana.TabIndex = 4;
-            labelMana.Text = "Mana: 0 / 0";
+            labelMana.Text = "Mana: /100";
+            // 
+            // picPlayer
+            // 
+            picPlayer.BackColor = Color.Transparent;
+            picPlayer.Location = new Point(153, 159);
+            picPlayer.Name = "picPlayer";
+            picPlayer.Size = new Size(148, 212);
+            picPlayer.TabIndex = 5;
+            picPlayer.TabStop = false;
+            // 
+            // picMonster
+            // 
+            picMonster.BackColor = Color.Transparent;
+            picMonster.Location = new Point(461, 159);
+            picMonster.Name = "picMonster";
+            picMonster.Size = new Size(256, 212);
+            picMonster.TabIndex = 6;
+            picMonster.TabStop = false;
+            // 
+            // pbarPlayerMana
+            // 
+            pbarPlayerMana.ForeColor = Color.MidnightBlue;
+            pbarPlayerMana.Location = new Point(133, 115);
+            pbarPlayerMana.Name = "pbarPlayerMana";
+            pbarPlayerMana.Size = new Size(168, 16);
+            pbarPlayerMana.TabIndex = 7;
+            // 
+            // pbarPlayerHP
+            // 
+            pbarPlayerHP.Location = new Point(133, 137);
+            pbarPlayerHP.Name = "pbarPlayerHP";
+            pbarPlayerHP.Size = new Size(168, 16);
+            pbarPlayerHP.TabIndex = 8;
+            // 
+            // pbarMonsterHP
+            // 
+            pbarMonsterHP.ForeColor = Color.Red;
+            pbarMonsterHP.Location = new Point(461, 137);
+            pbarMonsterHP.Name = "pbarMonsterHP";
+            pbarMonsterHP.Size = new Size(256, 16);
+            pbarMonsterHP.TabIndex = 9;
             // 
             // labelBattleLog
             // 
             labelBattleLog.AutoSize = true;
-            labelBattleLog.BackColor = Color.Silver;
-            labelBattleLog.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelBattleLog.ForeColor = SystemColors.ControlText;
-            labelBattleLog.Location = new Point(732, 408);
+            labelBattleLog.BackColor = Color.Transparent;
+            labelBattleLog.Font = new Font("Showcard Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelBattleLog.Location = new Point(669, 397);
             labelBattleLog.Name = "labelBattleLog";
-            labelBattleLog.Size = new Size(106, 40);
-            labelBattleLog.TabIndex = 5;
-            labelBattleLog.Text = "Battle Log:\r\n\r\n";
+            labelBattleLog.Size = new Size(139, 27);
+            labelBattleLog.TabIndex = 10;
+            labelBattleLog.Text = "Battle Log:\r\n";
+            labelBattleLog.TextAlign = ContentAlignment.BottomRight;
             // 
             // labelPlayerName
             // 
             labelPlayerName.AutoSize = true;
             labelPlayerName.BackColor = Color.Transparent;
-            labelPlayerName.Font = new Font("Showcard Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelPlayerName.ForeColor = SystemColors.ButtonFace;
-            labelPlayerName.Location = new Point(61, 39);
+            labelPlayerName.Font = new Font("Showcard Gothic", 12F);
+            labelPlayerName.Location = new Point(111, 64);
             labelPlayerName.Name = "labelPlayerName";
-            labelPlayerName.Size = new Size(102, 27);
-            labelPlayerName.TabIndex = 6;
+            labelPlayerName.Size = new Size(78, 20);
+            labelPlayerName.TabIndex = 11;
             labelPlayerName.Text = "Player: ";
             // 
             // labelMonsterName
             // 
             labelMonsterName.AutoSize = true;
             labelMonsterName.BackColor = Color.Transparent;
-            labelMonsterName.Font = new Font("Showcard Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelMonsterName.ForeColor = SystemColors.ButtonFace;
-            labelMonsterName.Location = new Point(597, 39);
+            labelMonsterName.Font = new Font("Showcard Gothic", 12F);
+            labelMonsterName.ForeColor = SystemColors.ControlText;
+            labelMonsterName.Location = new Point(769, 64);
             labelMonsterName.Name = "labelMonsterName";
-            labelMonsterName.Size = new Size(90, 27);
-            labelMonsterName.TabIndex = 7;
-            labelMonsterName.Text = "Enemy:";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Location = new Point(147, 137);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(169, 241);
-            pictureBox1.TabIndex = 8;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Location = new Point(550, 137);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(269, 241);
-            pictureBox2.TabIndex = 9;
-            pictureBox2.TabStop = false;
-            // 
-            // pbarPlayerHP
-            // 
-            pbarPlayerHP.Location = new Point(61, 69);
-            pbarPlayerHP.Name = "pbarPlayerHP";
-            pbarPlayerHP.Size = new Size(269, 29);
-            pbarPlayerHP.TabIndex = 10;
-            // 
-            // pbarMonsterHP
-            // 
-            pbarMonsterHP.ForeColor = Color.Red;
-            pbarMonsterHP.Location = new Point(597, 69);
-            pbarMonsterHP.Name = "pbarMonsterHP";
-            pbarMonsterHP.Size = new Size(269, 29);
-            pbarMonsterHP.TabIndex = 11;
-            // 
-            // pbarPlayerMana
-            // 
-            pbarPlayerMana.Location = new Point(47, 458);
-            pbarPlayerMana.Name = "pbarPlayerMana";
-            pbarPlayerMana.Size = new Size(269, 20);
-            pbarPlayerMana.TabIndex = 12;
+            labelMonsterName.Size = new Size(94, 20);
+            labelMonsterName.TabIndex = 12;
+            labelMonsterName.Text = "Monster: ";
             // 
             // FormGameMode
             // 
@@ -177,23 +179,22 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(958, 523);
-            Controls.Add(pbarPlayerMana);
-            Controls.Add(pbarMonsterHP);
-            Controls.Add(pbarPlayerHP);
-            Controls.Add(pictureBox2);
-            Controls.Add(pictureBox1);
             Controls.Add(labelMonsterName);
             Controls.Add(labelPlayerName);
             Controls.Add(labelBattleLog);
+            Controls.Add(pbarMonsterHP);
+            Controls.Add(pbarPlayerHP);
+            Controls.Add(pbarPlayerMana);
+            Controls.Add(picMonster);
+            Controls.Add(picPlayer);
             Controls.Add(labelMana);
-            Controls.Add(buttonAttack);
-            Controls.Add(buttonSpecialAttack);
+            Controls.Add(btnSpecial);
+            Controls.Add(btnAttack);
             Controls.Add(PauseButton);
             Name = "FormGameMode";
-            Text = "Game Battle scene";
-            Load += FormGameMode_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            Text = "GameMode";
+            ((System.ComponentModel.ISupportInitialize)picPlayer).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picMonster).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -201,16 +202,16 @@
         #endregion
 
         private Button PauseButton;
-        private Button buttonSpecialAttack;
-        private Button buttonAttack;
+        private Button btnAttack;
+        private Button btnSpecial;
         private Label labelMana;
+        private PictureBox picPlayer;
+        private PictureBox picMonster;
+        private ProgressBar pbarPlayerMana;
+        private ProgressBar pbarPlayerHP;
+        private ProgressBar pbarMonsterHP;
         private Label labelBattleLog;
         private Label labelPlayerName;
         private Label labelMonsterName;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
-        private ProgressBar pbarPlayerHP;
-        private ProgressBar pbarMonsterHP;
-        private ProgressBar pbarPlayerMana;
     }
 }

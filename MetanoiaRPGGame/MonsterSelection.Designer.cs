@@ -112,7 +112,7 @@
             picDragon.BackColor = Color.Transparent;
             picDragon.BackgroundImageLayout = ImageLayout.Zoom;
             picDragon.ErrorImage = null;
-            picDragon.Image = (Image)resources.GetObject("picDragon.Image");
+            picDragon.Image = Properties.Resources.Dragon;
             picDragon.InitialImage = null;
             picDragon.Location = new Point(672, 152);
             picDragon.Name = "picDragon";
@@ -120,13 +120,14 @@
             picDragon.SizeMode = PictureBoxSizeMode.StretchImage;
             picDragon.TabIndex = 11;
             picDragon.TabStop = false;
+            picDragon.Click += picDragon_Click;
             // 
             // picCerberus
             // 
             picCerberus.BackColor = Color.Transparent;
             picCerberus.BackgroundImageLayout = ImageLayout.Zoom;
             picCerberus.ErrorImage = null;
-            picCerberus.Image = (Image)resources.GetObject("picCerberus.Image");
+            picCerberus.Image = Properties.Resources.Cerberus;
             picCerberus.InitialImage = null;
             picCerberus.Location = new Point(339, 152);
             picCerberus.Name = "picCerberus";
@@ -134,13 +135,14 @@
             picCerberus.SizeMode = PictureBoxSizeMode.StretchImage;
             picCerberus.TabIndex = 10;
             picCerberus.TabStop = false;
+            picCerberus.Click += picCerberus_Click;
             // 
             // picSerpent
             // 
             picSerpent.BackColor = Color.Transparent;
             picSerpent.BackgroundImageLayout = ImageLayout.Zoom;
             picSerpent.ErrorImage = null;
-            picSerpent.Image = (Image)resources.GetObject("picSerpent.Image");
+            picSerpent.Image = Properties.Resources.Serpent;
             picSerpent.ImageLocation = "";
             picSerpent.InitialImage = null;
             picSerpent.Location = new Point(86, 152);
@@ -149,6 +151,7 @@
             picSerpent.SizeMode = PictureBoxSizeMode.Zoom;
             picSerpent.TabIndex = 9;
             picSerpent.TabStop = false;
+            picSerpent.Click += picSerpent_Click;
             // 
             // FormMonsterSelection
             // 

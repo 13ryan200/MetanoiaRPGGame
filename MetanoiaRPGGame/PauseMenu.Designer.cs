@@ -36,6 +36,7 @@
             // 
             // MainMenubutton
             // 
+            MainMenubutton.BackgroundImage = (Image)resources.GetObject("MainMenubutton.BackgroundImage");
             MainMenubutton.Font = new Font("Showcard Gothic", 15.75F);
             MainMenubutton.Image = (Image)resources.GetObject("MainMenubutton.Image");
             MainMenubutton.Location = new Point(318, 327);
@@ -48,6 +49,7 @@
             // 
             // Resumebutton
             // 
+            Resumebutton.BackgroundImage = (Image)resources.GetObject("Resumebutton.BackgroundImage");
             Resumebutton.Font = new Font("Showcard Gothic", 15.75F);
             Resumebutton.Image = (Image)resources.GetObject("Resumebutton.Image");
             Resumebutton.Location = new Point(318, 212);
@@ -62,11 +64,11 @@
             // 
             PauseMenuLabel.AutoSize = true;
             PauseMenuLabel.BackColor = Color.Transparent;
-            PauseMenuLabel.Font = new Font("Showcard Gothic", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            PauseMenuLabel.Font = new Font("Showcard Gothic", 56.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PauseMenuLabel.Image = (Image)resources.GetObject("PauseMenuLabel.Image");
-            PauseMenuLabel.Location = new Point(259, 74);
+            PauseMenuLabel.Location = new Point(224, 67);
             PauseMenuLabel.Name = "PauseMenuLabel";
-            PauseMenuLabel.Size = new Size(428, 79);
+            PauseMenuLabel.Size = new Size(496, 93);
             PauseMenuLabel.TabIndex = 3;
             PauseMenuLabel.Text = "Pause Menu";
             // 
@@ -81,7 +83,7 @@
             Controls.Add(MainMenubutton);
             Controls.Add(Resumebutton);
             Name = "FormPauseMenu";
-            Text = "Pause Menu";
+            Text = "Form3";
             ResumeLayout(false);
             PerformLayout();
         }

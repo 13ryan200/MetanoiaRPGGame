@@ -16,7 +16,7 @@ namespace MetanoiaRPGGame
         private void Resumebutton_Click(object sender, EventArgs e)
         {
             gameForm.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void MainMenubutton_Click(object sender, EventArgs e)

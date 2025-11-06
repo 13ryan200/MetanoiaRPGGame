@@ -2955,7 +2955,7 @@
         rkJggg==
 </value>
   </data>
-  <data name="GameLabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="label1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABLAAAAMgCAYAAAAz4JsCAAAABGdBTUEAALGPC/xhBQAA/8dJREFUeF7s
         nQe0LFWVv9+MM47jzDhjGP+OjqOTdFRQQFEUFcSMmHMOYyTnnKNkASUIElRUUBAQUUEQEQEVBAHJPF7i
@@ -13095,7 +13095,7 @@
         RU5ErkJggg==
 </value>
   </data>
-  <data name="label1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="label2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABLAAAAMgCAYAAAAz4JsCAAAABGdBTUEAALGPC/xhBQAA/8dJREFUeF7s
         nQe0LFWVv9+MM47jzDhjGP+OjqOTdFRQQFEUFcSMmHMOYyTnnKNkASUIElRUUBAQUUEQEQEVBAHJPF7i
