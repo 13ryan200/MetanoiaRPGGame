@@ -35,13 +35,13 @@ namespace MetanoiaRPGGame
             switch (monster.Name)
             {
                 case "Dragon":
-                    picMonster.Image = Properties.Resources.dragon;
+                    picMonster.Image = Properties.Resources.Dragon;
                     break;
                 case "Cerberus":
-                    picMonster.Image = Properties.Resources.cerberus;
+                    picMonster.Image = Properties.Resources.Cerberus;
                     break;
                 case "Serpent":
-                    picMonster.Image = Properties.Resources.serpent;
+                    picMonster.Image = Properties.Resources.Serpent;
                     break;
             }
 

@@ -69,7 +69,7 @@
             // picKnight
             // 
             picKnight.BackColor = Color.Transparent;
-            picKnight.Image = (Image)resources.GetObject("picKnight.Image");
+            picKnight.Image = Properties.Resources.Knight;
             picKnight.Location = new Point(109, 116);
             picKnight.Name = "picKnight";
             picKnight.Size = new Size(188, 237);
@@ -106,7 +106,7 @@
             // picPriest
             // 
             picPriest.BackColor = Color.Transparent;
-            picPriest.Image = (Image)resources.GetObject("picPriest.Image");
+            picPriest.Image = Properties.Resources.Priest;
             picPriest.Location = new Point(387, 118);
             picPriest.Name = "picPriest";
             picPriest.Size = new Size(188, 237);
@@ -130,7 +130,7 @@
             // picMage
             // 
             picMage.BackColor = Color.Transparent;
-            picMage.Image = (Image)resources.GetObject("picMage.Image");
+            picMage.Image = Properties.Resources.Mage;
             picMage.Location = new Point(657, 116);
             picMage.Name = "picMage";
             picMage.Size = new Size(188, 237);

@@ -101,32 +101,32 @@ namespace MetanoiaRPGGame.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] Knight {
+        internal static System.Drawing.Bitmap Knight {
             get {
                 object obj = ResourceManager.GetObject("Knight", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] Mage {
+        internal static System.Drawing.Bitmap Mage {
             get {
                 object obj = ResourceManager.GetObject("Mage", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] Priest {
+        internal static System.Drawing.Bitmap Priest {
             get {
                 object obj = ResourceManager.GetObject("Priest", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
