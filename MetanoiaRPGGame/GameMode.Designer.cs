@@ -90,6 +90,7 @@
             labelMana.AutoSize = true;
             labelMana.BackColor = Color.Transparent;
             labelMana.Font = new Font("Showcard Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelMana.Image = (Image)resources.GetObject("labelMana.Image");
             labelMana.Location = new Point(26, 411);
             labelMana.Name = "labelMana";
             labelMana.Size = new Size(140, 30);
@@ -100,9 +101,10 @@
             // 
             picPlayer.BackColor = Color.Transparent;
             picPlayer.ErrorImage = null;
-            picPlayer.Location = new Point(153, 159);
+            picPlayer.Location = new Point(133, 159);
             picPlayer.Name = "picPlayer";
-            picPlayer.Size = new Size(148, 212);
+            picPlayer.Size = new Size(168, 212);
+            picPlayer.SizeMode = PictureBoxSizeMode.Zoom;
             picPlayer.TabIndex = 5;
             picPlayer.TabStop = false;
             // 
@@ -111,9 +113,11 @@
             picMonster.BackColor = Color.Transparent;
             picMonster.BackgroundImageLayout = ImageLayout.Zoom;
             picMonster.ErrorImage = null;
-            picMonster.Location = new Point(461, 159);
+            picMonster.InitialImage = null;
+            picMonster.Location = new Point(477, 159);
             picMonster.Name = "picMonster";
-            picMonster.Size = new Size(256, 212);
+            picMonster.Size = new Size(292, 212);
+            picMonster.SizeMode = PictureBoxSizeMode.Zoom;
             picMonster.TabIndex = 6;
             picMonster.TabStop = false;
             // 
@@ -136,7 +140,7 @@
             // 
             pbarMonsterHP.BackColor = Color.CadetBlue;
             pbarMonsterHP.ForeColor = Color.Red;
-            pbarMonsterHP.Location = new Point(461, 137);
+            pbarMonsterHP.Location = new Point(477, 137);
             pbarMonsterHP.Name = "pbarMonsterHP";
             pbarMonsterHP.Size = new Size(256, 16);
             pbarMonsterHP.TabIndex = 9;
@@ -146,6 +150,7 @@
             labelBattleLog.AutoSize = true;
             labelBattleLog.BackColor = Color.Transparent;
             labelBattleLog.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelBattleLog.Image = (Image)resources.GetObject("labelBattleLog.Image");
             labelBattleLog.Location = new Point(511, 397);
             labelBattleLog.Name = "labelBattleLog";
             labelBattleLog.Size = new Size(106, 20);
@@ -158,6 +163,7 @@
             labelPlayerName.AutoSize = true;
             labelPlayerName.BackColor = Color.Transparent;
             labelPlayerName.Font = new Font("Showcard Gothic", 12F);
+            labelPlayerName.Image = (Image)resources.GetObject("labelPlayerName.Image");
             labelPlayerName.Location = new Point(111, 64);
             labelPlayerName.Name = "labelPlayerName";
             labelPlayerName.Size = new Size(78, 20);
@@ -170,6 +176,7 @@
             labelMonsterName.BackColor = Color.Transparent;
             labelMonsterName.Font = new Font("Showcard Gothic", 12F);
             labelMonsterName.ForeColor = SystemColors.ControlText;
+            labelMonsterName.Image = (Image)resources.GetObject("labelMonsterName.Image");
             labelMonsterName.Location = new Point(769, 64);
             labelMonsterName.Name = "labelMonsterName";
             labelMonsterName.Size = new Size(94, 20);
@@ -184,14 +191,14 @@
             BackgroundImage = Properties.Resources.BattleArena;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(958, 523);
+            Controls.Add(picMonster);
+            Controls.Add(picPlayer);
             Controls.Add(labelMonsterName);
             Controls.Add(labelPlayerName);
             Controls.Add(labelBattleLog);
             Controls.Add(pbarMonsterHP);
             Controls.Add(pbarPlayerHP);
             Controls.Add(pbarPlayerMana);
-            Controls.Add(picMonster);
-            Controls.Add(picPlayer);
             Controls.Add(labelMana);
             Controls.Add(btnSpecial);
             Controls.Add(btnAttack);

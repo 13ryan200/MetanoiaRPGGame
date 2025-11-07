@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -7,9 +8,9 @@ namespace MetanoiaRPGGame
 {
     public partial class FormGameMode : Form
     {
+        private Random rng = new Random();
         private Character player;
         private Monster monster;
-        private Random rng = new Random();
 
         public FormGameMode(Character selectedCharacter, Monster selectedMonster)
         {
@@ -20,44 +21,60 @@ namespace MetanoiaRPGGame
 
         private void FormGameMode_Load(object sender, EventArgs e)
         {
-            this.BackgroundImage = Properties.Resources.BattleArena; 
-            this.BackgroundImageLayout = ImageLayout.Stretch;
-            this.BackColor = Color.Black;
-
-            switch (player.Name)
+            if (player == null || monster == null)
             {
-                case "Knight": picPlayer.Image = Properties.Resources.Knight; break;
-                case "Priest": picPlayer.Image = Properties.Resources.Priest; break;
-                case "Mage": picPlayer.Image = Properties.Resources.Mage; break;
-                default: picPlayer.Image = null; break;
+                MessageBox.Show("❌ Player or Monster was not passed correctly!");
+                return;
             }
 
-            switch (monster.Name)
-            {
-                case "Dragon": picMonster.Image = Properties.Resources.Dragon; break;
-                case "Cerberus": picMonster.Image = Properties.Resources.Cerberus; break;
-                case "Serpent": picMonster.Image = Properties.Resources.Serpent; break;
-                default: picMonster.Image = null; break;
-            }
-
-            if (picMonster.Image != null)
-                picMonster.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
-
-            picPlayer.BackColor = Color.Transparent;
-            picMonster.BackColor = Color.Transparent;
-            picPlayer.SizeMode = PictureBoxSizeMode.Zoom;
-            picMonster.SizeMode = PictureBoxSizeMode.Zoom;
-            picPlayer.BringToFront();
-            picMonster.BringToFront();
+            labelBattleLog.Text = $"Debug Info:\nPlayer = {player.Name}\nMonster = {monster.Name}";
 
             labelPlayerName.Text = $"Player: {player.Name}";
             labelMonsterName.Text = $"Enemy: {monster.Name}";
+
+            picPlayer.Image = GetImageByName(player.Name);
+            picMonster.Image = GetImageByName(monster.Name);
+
+            picPlayer.SizeMode = PictureBoxSizeMode.Zoom;
+            picMonster.SizeMode = PictureBoxSizeMode.Zoom;
 
             pbarPlayerHP.Maximum = player.HP;
             pbarMonsterHP.Maximum = monster.HP;
             pbarPlayerMana.Maximum = player.MaxMana;
 
+            pbarPlayerHP.Value = player.HP;
+            pbarMonsterHP.Value = monster.HP;
+            pbarPlayerMana.Value = player.Mana;
+
             UpdateUI();
+        }
+
+        private Bitmap GetImageByName(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return null;
+
+            try
+            {
+                object res = Properties.Resources.ResourceManager.GetObject(name);
+
+                if (res is Bitmap bmp)
+                    return bmp;
+
+                if (res is byte[] bytes)
+                {
+                    using (var ms = new MemoryStream(bytes))
+                        return new Bitmap(ms);
+                }
+
+                MessageBox.Show($"⚠️ Resource '{name}' found but not an image (type: {res?.GetType().Name ?? "null"})");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"❌ Failed to load image '{name}': {ex.Message}");
+                return null;
+            }
         }
 
         private async void btnAttack_Click(object sender, EventArgs e)
@@ -72,8 +89,8 @@ namespace MetanoiaRPGGame
             await AnimateHit(picMonster);
 
             player.GainMana(20);
-
             labelBattleLog.Text = $"{player.Name} attacks {monster.Name} for {playerDamage} damage!";
+
             CheckBattleState();
         }
 
@@ -120,12 +137,13 @@ namespace MetanoiaRPGGame
                 btnAttack.Enabled = btnSpecial.Enabled = false;
 
                 int xpGained = monster.Attack * 5;
+                Character oldStats = player.Clone();
                 player.GainXP(xpGained);
 
-                FormLevelUp YouWin = new FormLevelUp(player, player);
-                YouWin.Show();
+                FormLevelUp levelUpScreen = new FormLevelUp(oldStats, player);
+                levelUpScreen.Show();
                 this.Hide();
-                
+                return;
             }
 
             await Task.Delay(300);
@@ -155,13 +173,6 @@ namespace MetanoiaRPGGame
             btnSpecial.Enabled = player.CanUseSpecial;
         }
 
-        private void PauseButton_Click(object sender, EventArgs e)
-        {
-            FormPauseMenu pause = new FormPauseMenu(this);
-            pause.Show();
-            this.Hide();
-        }
-
         private async Task AnimateHit(PictureBox target)
         {
             Point original = target.Location;
@@ -174,6 +185,13 @@ namespace MetanoiaRPGGame
                 target.Left += 10;
             }
             target.Location = original;
+        }
+
+        private void PauseButton_Click(object sender, EventArgs e)
+        {
+            FormPauseMenu pause = new FormPauseMenu(this);
+            pause.Show();
+            this.Hide();
         }
     }
 }

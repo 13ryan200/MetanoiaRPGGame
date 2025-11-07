@@ -62,6 +62,7 @@
             labelMonsterSelection.BackColor = Color.Transparent;
             labelMonsterSelection.Font = new Font("Showcard Gothic", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelMonsterSelection.ForeColor = SystemColors.ControlText;
+            labelMonsterSelection.Image = (Image)resources.GetObject("labelMonsterSelection.Image");
             labelMonsterSelection.Location = new Point(247, 53);
             labelMonsterSelection.Name = "labelMonsterSelection";
             labelMonsterSelection.Size = new Size(448, 46);

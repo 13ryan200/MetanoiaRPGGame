@@ -81,16 +81,6 @@ namespace MetanoiaRPGGame.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Cerberus2 {
-            get {
-                object obj = ResourceManager.GetObject("Cerberus2", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Dragon {
@@ -127,16 +117,6 @@ namespace MetanoiaRPGGame.Properties {
             get {
                 object obj = ResourceManager.GetObject("Mage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] mage3 {
-            get {
-                object obj = ResourceManager.GetObject("mage3", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         

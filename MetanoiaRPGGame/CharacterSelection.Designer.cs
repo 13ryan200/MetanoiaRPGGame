@@ -47,6 +47,7 @@
             labelCharacterSelection.AutoSize = true;
             labelCharacterSelection.BackColor = Color.Transparent;
             labelCharacterSelection.Font = new Font("Showcard Gothic", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelCharacterSelection.Image = (Image)resources.GetObject("labelCharacterSelection.Image");
             labelCharacterSelection.Location = new Point(218, 35);
             labelCharacterSelection.Name = "labelCharacterSelection";
             labelCharacterSelection.Size = new Size(493, 46);

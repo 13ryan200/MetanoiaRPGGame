@@ -27,15 +27,8 @@ namespace MetanoiaRPGGame
 
         private void NextGamebutton_Click(object sender, EventArgs e)
         {
-            Monster nextMonster = new Monster()
-            {
-                Name = "Cerberus",
-                HP = 110,
-                Attack = 20
-            };
-
-            FormGameMode nextBattle = new FormGameMode(playerAfter, nextMonster);
-            nextBattle.Show();
+            FormMonsterSelection monsterSelect = new FormMonsterSelection(playerAfter);
+            monsterSelect.Show();
 
             this.Close();
         }

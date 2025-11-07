@@ -1,7 +1,5 @@
 ﻿using System;
 
-using System;
-
 namespace MetanoiaRPGGame
 {
     public class Character
@@ -17,23 +15,41 @@ namespace MetanoiaRPGGame
         public int SpecialAttack { get; set; }
         public int Defense { get; set; }
         public int Stamina { get; set; }
+
         public int Mana { get; set; } = 0;
         public int MaxMana { get; set; } = 100;
 
         public bool CanUseSpecial => Mana >= MaxMana;
 
+        public Character() { }
+
+        public Character(string name, int hp, int attack, int special)
+        {
+            Name = name;
+            HP = hp;
+            MaxHP = hp;
+            Attack = attack;
+            SpecialAttack = special;
+            MaxMana = 100;
+            Mana = 0;
+        }
+
         public override string ToString()
         {
             return $"Name: {Name}\n" +
-                   $"HP: {HP}\n" +
+                   $"Level: {Level}\n" +
+                   $"HP: {HP}/{MaxHP}\n" +
                    $"Attack: {Attack}\n" +
-                   $"Special Attack: {SpecialAttack}";
+                   $"Special Attack: {SpecialAttack}\n" +
+                   $"Mana: {Mana}/{MaxMana}\n" +
+                   $"XP: {XP}/{XPToNextLevel}";
         }
 
         public void GainMana(int amount)
         {
             Mana += amount;
-            if (Mana > MaxMana) Mana = MaxMana;
+            if (Mana > MaxMana)
+                Mana = MaxMana;
         }
 
         public void UseMana()
@@ -44,23 +60,31 @@ namespace MetanoiaRPGGame
         public void GainXP(int amount)
         {
             XP += amount;
-            if (XP >= XPToNextLevel)
+            while (XP >= XPToNextLevel)
             {
+                XP -= XPToNextLevel;
                 LevelUp();
             }
         }
 
         public void LevelUp()
         {
-            XP -= XPToNextLevel;
-            XPToNextLevel += 50;
             Level++;
-            HP += 20;
-            MaxMana += 10;
+            XPToNextLevel = (int)(XPToNextLevel * 1.5); 
+
+            MaxHP += 100;
             Attack += 5;
             SpecialAttack += 5;
+            MaxMana += 0;
+
+            RefreshHP();
             Mana = 0;
-            MaxHP += 20;
+        }
+
+        public void RefreshHP()
+        {
+            HP = MaxHP;
+            Mana = MaxMana;
         }
 
         public Character Clone()
@@ -69,15 +93,16 @@ namespace MetanoiaRPGGame
             {
                 Name = this.Name,
                 HP = this.HP,
+                MaxHP = this.MaxHP,
                 Attack = this.Attack,
                 SpecialAttack = this.SpecialAttack,
                 Defense = this.Defense,
                 Stamina = this.Stamina,
                 Mana = this.Mana,
+                MaxMana = this.MaxMana,
                 Level = this.Level,
                 XP = this.XP,
-                MaxHP = this.MaxHP,
-                MaxMana = this.MaxMana
+                XPToNextLevel = this.XPToNextLevel
             };
         }
     }
