@@ -69,6 +69,7 @@
             btnAttack.TabIndex = 2;
             btnAttack.Text = "Attack ⚔️";
             btnAttack.UseVisualStyleBackColor = false;
+            btnAttack.Click += btnAttack_Click;
             // 
             // btnSpecial
             // 
@@ -98,6 +99,7 @@
             // picPlayer
             // 
             picPlayer.BackColor = Color.Transparent;
+            picPlayer.ErrorImage = null;
             picPlayer.Location = new Point(153, 159);
             picPlayer.Name = "picPlayer";
             picPlayer.Size = new Size(148, 212);
@@ -107,6 +109,8 @@
             // picMonster
             // 
             picMonster.BackColor = Color.Transparent;
+            picMonster.BackgroundImageLayout = ImageLayout.Zoom;
+            picMonster.ErrorImage = null;
             picMonster.Location = new Point(461, 159);
             picMonster.Name = "picMonster";
             picMonster.Size = new Size(256, 212);
@@ -130,6 +134,7 @@
             // 
             // pbarMonsterHP
             // 
+            pbarMonsterHP.BackColor = Color.CadetBlue;
             pbarMonsterHP.ForeColor = Color.Red;
             pbarMonsterHP.Location = new Point(461, 137);
             pbarMonsterHP.Name = "pbarMonsterHP";
@@ -140,10 +145,10 @@
             // 
             labelBattleLog.AutoSize = true;
             labelBattleLog.BackColor = Color.Transparent;
-            labelBattleLog.Font = new Font("Showcard Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelBattleLog.Location = new Point(669, 397);
+            labelBattleLog.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelBattleLog.Location = new Point(511, 397);
             labelBattleLog.Name = "labelBattleLog";
-            labelBattleLog.Size = new Size(139, 27);
+            labelBattleLog.Size = new Size(106, 20);
             labelBattleLog.TabIndex = 10;
             labelBattleLog.Text = "Battle Log:\r\n";
             labelBattleLog.TextAlign = ContentAlignment.BottomRight;
@@ -176,7 +181,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImage = Properties.Resources.BattleArena;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(958, 523);
             Controls.Add(labelMonsterName);

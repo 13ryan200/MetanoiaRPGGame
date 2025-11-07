@@ -120,7 +120,7 @@
             picDragon.SizeMode = PictureBoxSizeMode.StretchImage;
             picDragon.TabIndex = 11;
             picDragon.TabStop = false;
-            picDragon.Click += picDragon_Click;
+            picDragon.Click += Monster_Click;
             // 
             // picCerberus
             // 
@@ -135,7 +135,7 @@
             picCerberus.SizeMode = PictureBoxSizeMode.StretchImage;
             picCerberus.TabIndex = 10;
             picCerberus.TabStop = false;
-            picCerberus.Click += picCerberus_Click;
+            picCerberus.Click += Monster_Click;
             // 
             // picSerpent
             // 
@@ -151,7 +151,7 @@
             picSerpent.SizeMode = PictureBoxSizeMode.Zoom;
             picSerpent.TabIndex = 9;
             picSerpent.TabStop = false;
-            picSerpent.Click += picSerpent_Click;
+            picSerpent.Click += Monster_Click;
             // 
             // FormMonsterSelection
             // 

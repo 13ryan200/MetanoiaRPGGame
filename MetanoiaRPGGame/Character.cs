@@ -1,5 +1,7 @@
 ﻿using System;
 
+using System;
+
 namespace MetanoiaRPGGame
 {
     public class Character
@@ -10,6 +12,7 @@ namespace MetanoiaRPGGame
         public int XPToNextLevel { get; set; } = 100;
 
         public int HP { get; set; }
+        public int MaxHP { get; set; }
         public int Attack { get; set; }
         public int SpecialAttack { get; set; }
         public int Defense { get; set; }
@@ -18,6 +21,14 @@ namespace MetanoiaRPGGame
         public int MaxMana { get; set; } = 100;
 
         public bool CanUseSpecial => Mana >= MaxMana;
+
+        public override string ToString()
+        {
+            return $"Name: {Name}\n" +
+                   $"HP: {HP}\n" +
+                   $"Attack: {Attack}\n" +
+                   $"Special Attack: {SpecialAttack}";
+        }
 
         public void GainMana(int amount)
         {
@@ -42,15 +53,32 @@ namespace MetanoiaRPGGame
         public void LevelUp()
         {
             XP -= XPToNextLevel;
-            XPToNextLevel += 50; // harder each level
-
+            XPToNextLevel += 50;
             Level++;
             HP += 20;
+            MaxMana += 10;
             Attack += 5;
             SpecialAttack += 5;
-
-            // restore HP and Mana
             Mana = 0;
+            MaxHP += 20;
+        }
+
+        public Character Clone()
+        {
+            return new Character
+            {
+                Name = this.Name,
+                HP = this.HP,
+                Attack = this.Attack,
+                SpecialAttack = this.SpecialAttack,
+                Defense = this.Defense,
+                Stamina = this.Stamina,
+                Mana = this.Mana,
+                Level = this.Level,
+                XP = this.XP,
+                MaxHP = this.MaxHP,
+                MaxMana = this.MaxMana
+            };
         }
     }
 }

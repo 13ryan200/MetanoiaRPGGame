@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MetanoiaRPGGame
 {
@@ -19,34 +20,35 @@ namespace MetanoiaRPGGame
 
         private void FormGameMode_Load(object sender, EventArgs e)
         {
+            this.BackgroundImage = Properties.Resources.BattleArena; 
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            this.BackColor = Color.Black;
+
             switch (player.Name)
             {
-                case "Knight":
-                    picPlayer.Image = Properties.Resources.knight;
-                    break;
-                case "Priest":
-                    picPlayer.Image = Properties.Resources.priest;
-                    break;
-                case "Mage":
-                    picPlayer.Image = Properties.Resources.mage;
-                    break;
+                case "Knight": picPlayer.Image = Properties.Resources.Knight; break;
+                case "Priest": picPlayer.Image = Properties.Resources.Priest; break;
+                case "Mage": picPlayer.Image = Properties.Resources.Mage; break;
+                default: picPlayer.Image = null; break;
             }
 
             switch (monster.Name)
             {
-                case "Dragon":
-                    picMonster.Image = Properties.Resources.Dragon;
-                    break;
-                case "Cerberus":
-                    picMonster.Image = Properties.Resources.Cerberus;
-                    break;
-                case "Serpent":
-                    picMonster.Image = Properties.Resources.Serpent;
-                    break;
+                case "Dragon": picMonster.Image = Properties.Resources.Dragon; break;
+                case "Cerberus": picMonster.Image = Properties.Resources.Cerberus; break;
+                case "Serpent": picMonster.Image = Properties.Resources.Serpent; break;
+                default: picMonster.Image = null; break;
             }
 
             if (picMonster.Image != null)
                 picMonster.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
+
+            picPlayer.BackColor = Color.Transparent;
+            picMonster.BackColor = Color.Transparent;
+            picPlayer.SizeMode = PictureBoxSizeMode.Zoom;
+            picMonster.SizeMode = PictureBoxSizeMode.Zoom;
+            picPlayer.BringToFront();
+            picMonster.BringToFront();
 
             labelPlayerName.Text = $"Player: {player.Name}";
             labelMonsterName.Text = $"Enemy: {monster.Name}";
@@ -55,33 +57,29 @@ namespace MetanoiaRPGGame
             pbarMonsterHP.Maximum = monster.HP;
             pbarPlayerMana.Maximum = player.MaxMana;
 
-            pbarPlayerHP.Value = player.HP;
-            pbarMonsterHP.Value = monster.HP;
-            pbarPlayerMana.Value = player.Mana;
-
             UpdateUI();
         }
 
-        private void btnAttack_Click(object sender, EventArgs e)
+        private async void btnAttack_Click(object sender, EventArgs e)
         {
-            NormalAttack();
+            await NormalAttack();
+        }
+
+        private async Task NormalAttack()
+        {
+            int playerDamage = rng.Next(player.Attack - 5, player.Attack + 5);
+            monster.HP = Math.Max(0, monster.HP - playerDamage);
+            await AnimateHit(picMonster);
+
+            player.GainMana(20);
+
+            labelBattleLog.Text = $"{player.Name} attacks {monster.Name} for {playerDamage} damage!";
+            CheckBattleState();
         }
 
         private void btnSpecial_Click(object sender, EventArgs e)
         {
             SpecialAttack();
-        }
-
-        private void NormalAttack()
-        {
-            int playerDamage = rng.Next(player.Attack - 5, player.Attack + 5);
-            monster.HP -= playerDamage;
-            if (monster.HP < 0) monster.HP = 0;
-
-            player.GainMana(20);
-
-            labelBattleLog.Text = $"{player.Name} attacks {monster.Name} for {playerDamage}!";
-            CheckBattleState();
         }
 
         private void SpecialAttack()
@@ -93,27 +91,26 @@ namespace MetanoiaRPGGame
             }
 
             int specialDamage = player.SpecialAttack;
-            monster.HP -= specialDamage;
-            if (monster.HP < 0) monster.HP = 0;
-
+            monster.HP = Math.Max(0, monster.HP - specialDamage);
             player.UseMana();
-            labelBattleLog.Text = $"{player.Name} uses a SPECIAL ATTACK for {specialDamage} damage!";
+
+            labelBattleLog.Text = $"{player.Name} uses a SPECIAL ATTACK for {specialDamage}!";
             CheckBattleState();
         }
 
-        private void MonsterCounter()
+        private async void MonsterCounter()
         {
             if (monster.HP > 0)
             {
                 int monsterDamage = rng.Next(monster.Attack - 5, monster.Attack + 5);
-                player.HP -= monsterDamage;
-                if (player.HP < 0) player.HP = 0;
+                player.HP = Math.Max(0, player.HP - monsterDamage);
+                await AnimateHit(picPlayer);
 
                 labelBattleLog.Text += $"\n{monster.Name} hits back for {monsterDamage}!";
             }
         }
 
-        private void CheckBattleState()
+        private async void CheckBattleState()
         {
             UpdateUI();
 
@@ -125,16 +122,13 @@ namespace MetanoiaRPGGame
                 int xpGained = monster.Attack * 5;
                 player.GainXP(xpGained);
 
-                MessageBox.Show($"{player.Name} gained {xpGained} XP!\n" +
-                                $"Current Level: {player.Level}\n" +
-                                $"HP: {player.HP}, Attack: {player.Attack}, Special: {player.SpecialAttack}",
-                                "Level Up!",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-
-                return;
+                FormLevelUp YouWin = new FormLevelUp(player, player);
+                YouWin.Show();
+                this.Hide();
+                
             }
 
+            await Task.Delay(300);
             MonsterCounter();
             UpdateUI();
 
@@ -142,14 +136,18 @@ namespace MetanoiaRPGGame
             {
                 labelBattleLog.Text += $"\n{monster.Name} defeated {player.Name}!";
                 btnAttack.Enabled = btnSpecial.Enabled = false;
+
+                YouDied defeat = new YouDied();
+                defeat.Show();
+                this.Hide();
             }
         }
 
         private void UpdateUI()
         {
-            pbarPlayerHP.Value = Math.Max(0, player.HP);
-            pbarMonsterHP.Value = Math.Max(0, monster.HP);
-            pbarPlayerMana.Value = Math.Max(0, player.Mana);
+            pbarPlayerHP.Value = Math.Min(pbarPlayerHP.Maximum, Math.Max(0, player.HP));
+            pbarMonsterHP.Value = Math.Min(pbarMonsterHP.Maximum, Math.Max(0, monster.HP));
+            pbarPlayerMana.Value = Math.Min(pbarPlayerMana.Maximum, Math.Max(0, player.Mana));
 
             labelPlayerName.Text = $"{player.Name} HP: {player.HP}";
             labelMonsterName.Text = $"{monster.Name} HP: {monster.HP}";
@@ -164,15 +162,15 @@ namespace MetanoiaRPGGame
             this.Hide();
         }
 
-        private async void AnimateHit(PictureBox target)
+        private async Task AnimateHit(PictureBox target)
         {
             Point original = target.Location;
             for (int i = 0; i < 3; i++)
             {
                 target.Left += 10;
-                await System.Threading.Tasks.Task.Delay(50);
+                await Task.Delay(50);
                 target.Left -= 20;
-                await System.Threading.Tasks.Task.Delay(50);
+                await Task.Delay(50);
                 target.Left += 10;
             }
             target.Location = original;

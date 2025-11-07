@@ -76,6 +76,7 @@
             picKnight.SizeMode = PictureBoxSizeMode.StretchImage;
             picKnight.TabIndex = 2;
             picKnight.TabStop = false;
+            picKnight.Click += Character_Click;
             // 
             // rdoKnight
             // 
@@ -113,6 +114,7 @@
             picPriest.SizeMode = PictureBoxSizeMode.StretchImage;
             picPriest.TabIndex = 4;
             picPriest.TabStop = false;
+            picPriest.Click += Character_Click;
             // 
             // rdoMage
             // 
@@ -137,6 +139,7 @@
             picMage.SizeMode = PictureBoxSizeMode.StretchImage;
             picMage.TabIndex = 6;
             picMage.TabStop = false;
+            picMage.Click += Character_Click;
             // 
             // FormCharacterSelection
             // 

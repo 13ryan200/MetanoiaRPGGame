@@ -63,6 +63,16 @@ namespace MetanoiaRPGGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BattleArena {
+            get {
+                object obj = ResourceManager.GetObject("BattleArena", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cerberus {
             get {
                 object obj = ResourceManager.GetObject("Cerberus", resourceCulture);
@@ -121,6 +131,16 @@ namespace MetanoiaRPGGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] mage3 {
+            get {
+                object obj = ResourceManager.GetObject("mage3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Priest {
@@ -136,6 +156,26 @@ namespace MetanoiaRPGGame.Properties {
         internal static System.Drawing.Bitmap Serpent {
             get {
                 object obj = ResourceManager.GetObject("Serpent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap You_Died {
+            get {
+                object obj = ResourceManager.GetObject("You Died", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap YouDied {
+            get {
+                object obj = ResourceManager.GetObject("YouDied", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

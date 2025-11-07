@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace MetanoiaRPGGame
 {
@@ -9,6 +10,9 @@ namespace MetanoiaRPGGame
 
         public FormPauseMenu(FormGameMode game)
         {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                return;
+
             InitializeComponent();
             gameForm = game;
         }
