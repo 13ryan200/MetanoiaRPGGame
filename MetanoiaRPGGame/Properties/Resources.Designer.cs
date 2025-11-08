@@ -143,6 +143,16 @@ namespace MetanoiaRPGGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Screenshot_2025_11_08_202919_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("Screenshot_2025-11-08_202919-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Serpent {
             get {
                 object obj = ResourceManager.GetObject("Serpent", resourceCulture);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable disable
+using System;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
@@ -8,84 +9,71 @@ namespace MetanoiaRPGGame
 {
     public partial class FormGameMode : Form
     {
-        private readonly Random rng = new Random();
+        private Random rng = new Random();
         private Character player;
         private Monster monster;
+
+        public Character Player => this.player;
+        public Monster Monster => this.monster;
 
         public FormGameMode(Character selectedCharacter, Monster selectedMonster)
         {
             InitializeComponent();
             this.player = selectedCharacter;
             this.monster = selectedMonster;
+            FormGameMode_Load();
         }
 
-        public Character Player => player;
-        public Monster Monster => monster;
-
-        private void FormGameMode_Load(object sender, EventArgs e)
+        private void FormGameMode_Load()
         {
-            MessageBox.Show($"[DEBUG] Player = {player?.Name ?? "NULL"} | Monster = {monster?.Name ?? "NULL"}");
-
-            if (player == null || monster == null)
-            {
-                MessageBox.Show("Error: Player or Monster was not properly initialized.", "Game Error");
-                this.Close();
-                return;
-            }
 
             labelPlayerName.Text = $"Player: {player.Name}";
             labelMonsterName.Text = $"Enemy: {monster.Name}";
 
-            picPlayer.Image = LoadImage(player.Name);
-            picMonster.Image = LoadImage(monster.Name);
-
+            switch (player.Name)
+            {
+                case "Knight":
+                    picPlayer.Image = Properties.Resources.Knight;
+                    break;
+                case "Priest":
+                    picPlayer.Image = Properties.Resources.Priest;
+                    break;
+                case "Mage":
+                    picPlayer.Image = Properties.Resources.Mage;
+                    break;
+                default:
+                    picPlayer.Image = Properties.Resources.Fallback;
+                    break;
+            }
+          
+            switch (monster.Name)
+            {
+                case "Cerberus":
+                    picMonster.Image = Properties.Resources.Cerberus;
+                    break;
+                case "Dragon":
+                    picMonster.Image = Properties.Resources.Dragon;
+                    break;
+                case "Serpent":
+                    picMonster.Image = Properties.Resources.Serpent;
+                    break;
+                default:
+                    picMonster.Image = Properties.Resources.Fallback;
+                    break;
+            }
+          
             picPlayer.SizeMode = PictureBoxSizeMode.Zoom;
             picMonster.SizeMode = PictureBoxSizeMode.Zoom;
-
+            picPlayer.Refresh();
+            picMonster.Refresh();
             pbarPlayerHP.Maximum = player.HP;
             pbarMonsterHP.Maximum = monster.HP;
             pbarPlayerMana.Maximum = player.MaxMana;
-
             pbarPlayerHP.Value = player.HP;
             pbarMonsterHP.Value = monster.HP;
             pbarPlayerMana.Value = player.Mana;
 
             UpdateUI();
-        }
-#nullable disable
-        private Image LoadImage(string name)
-        {
-            try
-            {
-                MessageBox.Show($"🔎 Trying to load image: '{name}'", "Debug Check");
-
-                object res = Properties.Resources.ResourceManager.GetObject(name);
-
-                if (res == null)
-                {
-                    MessageBox.Show($"❌ Resource not found: '{name}'", "Missing Resource");
-                    return Properties.Resources.Fallback;
-                }
-
-                MessageBox.Show($"✅ Found '{name}' (Type: {res.GetType().Name})");
-
-                if (res is Bitmap bmp)
-                    return bmp;
-
-                if (res is byte[] bytes)
-                {
-                    using (var ms = new MemoryStream(bytes))
-                        return new Bitmap(ms);
-                }
-
-                MessageBox.Show($"⚠️ Image not found or invalid for: '{name}'", "Missing Resource", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return null;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"❌ Error loading image '{name}': {ex.Message}", "Image Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return Properties.Resources.Fallback;
-            }
         }
 
         private async void btnAttack_Click(object sender, EventArgs e)
@@ -100,7 +88,7 @@ namespace MetanoiaRPGGame
             await AnimateHit(picMonster);
 
             player.GainMana(20);
-            labelBattleLog.Text = $"{player.Name} attacks {monster.Name} for {playerDamage} damage!";
+            LabelBattleLog.Text = $"{player.Name} attacks {monster.Name} for {playerDamage} damage!";
 
             CheckBattleState();
         }
@@ -122,7 +110,7 @@ namespace MetanoiaRPGGame
             monster.HP = Math.Max(0, monster.HP - specialDamage);
             player.UseMana();
 
-            labelBattleLog.Text = $"{player.Name} uses a SPECIAL ATTACK for {specialDamage}!";
+            LabelBattleLog.Text = $"{player.Name} uses a SPECIAL ATTACK for {specialDamage}!";
             CheckBattleState();
         }
 
@@ -134,7 +122,7 @@ namespace MetanoiaRPGGame
                 player.HP = Math.Max(0, player.HP - monsterDamage);
                 await AnimateHit(picPlayer);
 
-                labelBattleLog.Text += $"\n{monster.Name} hits back for {monsterDamage}!";
+                LabelBattleLog.Text += $"\n{monster.Name} hits back for {monsterDamage}!";
             }
         }
 
@@ -144,14 +132,14 @@ namespace MetanoiaRPGGame
 
             if (monster.HP <= 0)
             {
-                labelBattleLog.Text += $"\n{player.Name} defeated {monster.Name}!";
-                btnAttack.Enabled = btnSpecial.Enabled = false;
+                LabelBattleLog.Text += $"\n{player.Name} defeated {monster.Name}!";
+                btnAttack.Enabled = btnSpecial.Enabled = true;
 
                 int xpGained = monster.Attack * 5;
                 Character oldStats = player.Clone();
                 player.GainXP(xpGained);
 
-                FormLevelUp levelUpScreen = new FormLevelUp(player);
+                FormLevelUp levelUpScreen = new FormLevelUp(oldStats, player);
                 levelUpScreen.Show();
                 this.Hide();
                 return;
@@ -163,7 +151,7 @@ namespace MetanoiaRPGGame
 
             if (player.HP <= 0)
             {
-                labelBattleLog.Text += $"\n{monster.Name} defeated {player.Name}!";
+                LabelBattleLog.Text += $"\n{monster.Name} defeated {player.Name}!";
                 btnAttack.Enabled = btnSpecial.Enabled = false;
 
                 YouDied defeat = new YouDied();

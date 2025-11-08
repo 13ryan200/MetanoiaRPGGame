@@ -13,6 +13,10 @@ namespace MetanoiaRPGGame
             player = leveledUpPlayer;
         }
 
+        public FormLevelUp(Character leveledUpPlayer, Character player) : this(leveledUpPlayer)
+        {
+        }
+
         private void FormLevelUp_Load(object sender, EventArgs e)
         {
             lblName.Text = $"Name: {player.Name}";

@@ -5,6 +5,8 @@ namespace MetanoiaRPGGame
 {
     public partial class FormCharacterSelection : Form
     {
+        Character selectedCharacter = new Character();
+
         public FormCharacterSelection()
         {
             InitializeComponent();
@@ -51,8 +53,6 @@ namespace MetanoiaRPGGame
 
         private void Nextbutton_Click(object sender, EventArgs e)
         {
-            Character selectedCharacter = new Character();
-
             if (rdoKnight.Checked)
                 selectedCharacter = knight;
             else if (rdoPriest.Checked)

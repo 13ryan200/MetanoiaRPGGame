@@ -38,11 +38,16 @@
             pbarPlayerMana = new ProgressBar();
             pbarPlayerHP = new ProgressBar();
             pbarMonsterHP = new ProgressBar();
-            labelBattleLog = new Label();
             labelPlayerName = new Label();
             labelMonsterName = new Label();
+            LabelBattleLog = new Label();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)picPlayer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMonster).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // PauseButton
@@ -101,10 +106,10 @@
             // 
             picPlayer.BackColor = Color.Transparent;
             picPlayer.ErrorImage = null;
-            picPlayer.Location = new Point(133, 159);
+            picPlayer.Location = new Point(113, 159);
             picPlayer.Name = "picPlayer";
             picPlayer.Size = new Size(168, 223);
-            picPlayer.SizeMode = PictureBoxSizeMode.StretchImage;
+            picPlayer.SizeMode = PictureBoxSizeMode.Zoom;
             picPlayer.TabIndex = 5;
             picPlayer.TabStop = false;
             // 
@@ -114,49 +119,36 @@
             picMonster.BackgroundImageLayout = ImageLayout.Zoom;
             picMonster.ErrorImage = null;
             picMonster.InitialImage = null;
-            picMonster.Location = new Point(477, 159);
+            picMonster.Location = new Point(571, 159);
             picMonster.Name = "picMonster";
             picMonster.Size = new Size(292, 223);
-            picMonster.SizeMode = PictureBoxSizeMode.StretchImage;
+            picMonster.SizeMode = PictureBoxSizeMode.Zoom;
             picMonster.TabIndex = 6;
             picMonster.TabStop = false;
             // 
             // pbarPlayerMana
             // 
             pbarPlayerMana.ForeColor = Color.MidnightBlue;
-            pbarPlayerMana.Location = new Point(133, 115);
+            pbarPlayerMana.Location = new Point(111, 87);
             pbarPlayerMana.Name = "pbarPlayerMana";
-            pbarPlayerMana.Size = new Size(168, 16);
+            pbarPlayerMana.Size = new Size(170, 17);
             pbarPlayerMana.TabIndex = 7;
             // 
             // pbarPlayerHP
             // 
-            pbarPlayerHP.Location = new Point(133, 137);
+            pbarPlayerHP.Location = new Point(111, 109);
             pbarPlayerHP.Name = "pbarPlayerHP";
-            pbarPlayerHP.Size = new Size(168, 16);
+            pbarPlayerHP.Size = new Size(170, 17);
             pbarPlayerHP.TabIndex = 8;
             // 
             // pbarMonsterHP
             // 
             pbarMonsterHP.BackColor = Color.CadetBlue;
             pbarMonsterHP.ForeColor = Color.Red;
-            pbarMonsterHP.Location = new Point(477, 137);
+            pbarMonsterHP.Location = new Point(693, 87);
             pbarMonsterHP.Name = "pbarMonsterHP";
-            pbarMonsterHP.Size = new Size(256, 16);
+            pbarMonsterHP.Size = new Size(170, 17);
             pbarMonsterHP.TabIndex = 9;
-            // 
-            // labelBattleLog
-            // 
-            labelBattleLog.AutoSize = true;
-            labelBattleLog.BackColor = Color.Transparent;
-            labelBattleLog.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelBattleLog.Image = (Image)resources.GetObject("labelBattleLog.Image");
-            labelBattleLog.Location = new Point(511, 397);
-            labelBattleLog.Name = "labelBattleLog";
-            labelBattleLog.Size = new Size(106, 20);
-            labelBattleLog.TabIndex = 10;
-            labelBattleLog.Text = "Battle Log:\r\n";
-            labelBattleLog.TextAlign = ContentAlignment.BottomRight;
             // 
             // labelPlayerName
             // 
@@ -183,6 +175,63 @@
             labelMonsterName.TabIndex = 12;
             labelMonsterName.Text = "Monster: ";
             // 
+            // LabelBattleLog
+            // 
+            LabelBattleLog.AutoSize = true;
+            LabelBattleLog.BackColor = Color.Transparent;
+            LabelBattleLog.Font = new Font("Showcard Gothic", 12F);
+            LabelBattleLog.ForeColor = SystemColors.ControlText;
+            LabelBattleLog.Image = (Image)resources.GetObject("LabelBattleLog.Image");
+            LabelBattleLog.Location = new Point(533, 419);
+            LabelBattleLog.Name = "LabelBattleLog";
+            LabelBattleLog.Size = new Size(106, 20);
+            LabelBattleLog.TabIndex = 13;
+            LabelBattleLog.Text = "Battle Log:";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.Screenshot_2025_11_08_202919_removebg_preview;
+            pictureBox1.Location = new Point(501, 401);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(424, 110);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 14;
+            pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Gainsboro;
+            label1.Font = new Font("Showcard Gothic", 12F);
+            label1.Location = new Point(68, 85);
+            label1.Name = "label1";
+            label1.Size = new Size(37, 20);
+            label1.TabIndex = 15;
+            label1.Text = "HP:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Gainsboro;
+            label2.Font = new Font("Showcard Gothic", 12F);
+            label2.Location = new Point(68, 109);
+            label2.Name = "label2";
+            label2.Size = new Size(40, 20);
+            label2.TabIndex = 16;
+            label2.Text = "MP:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Gainsboro;
+            label3.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(650, 84);
+            label3.Name = "label3";
+            label3.Size = new Size(37, 20);
+            label3.TabIndex = 17;
+            label3.Text = "HP:";
+            // 
             // FormGameMode
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -191,11 +240,14 @@
             BackgroundImage = Properties.Resources.BattleArena;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(958, 523);
-            Controls.Add(picMonster);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(picPlayer);
+            Controls.Add(picMonster);
+            Controls.Add(LabelBattleLog);
             Controls.Add(labelMonsterName);
             Controls.Add(labelPlayerName);
-            Controls.Add(labelBattleLog);
             Controls.Add(pbarMonsterHP);
             Controls.Add(pbarPlayerHP);
             Controls.Add(pbarPlayerMana);
@@ -203,10 +255,14 @@
             Controls.Add(btnSpecial);
             Controls.Add(btnAttack);
             Controls.Add(PauseButton);
+            Controls.Add(pictureBox1);
+            DoubleBuffered = true;
             Name = "FormGameMode";
             Text = "GameMode";
+            TransparencyKey = SystemColors.ActiveBorder;
             ((System.ComponentModel.ISupportInitialize)picPlayer).EndInit();
             ((System.ComponentModel.ISupportInitialize)picMonster).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -222,8 +278,12 @@
         private ProgressBar pbarPlayerMana;
         private ProgressBar pbarPlayerHP;
         private ProgressBar pbarMonsterHP;
-        private Label labelBattleLog;
         private Label labelPlayerName;
         private Label labelMonsterName;
+        private Label LabelBattleLog;
+        private PictureBox pictureBox1;
+        private Label label1;
+        private Label label2;
+        private Label label3;
     }
 }

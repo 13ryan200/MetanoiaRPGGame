@@ -7,7 +7,7 @@ namespace MetanoiaRPGGame
     {
         public Character selectedCharacter;
         public Monster selectedMonster;
-#nullable disable
+
         public FormMonsterSelection(Character selectedCharacter)
         {
             InitializeComponent();
@@ -55,14 +55,24 @@ namespace MetanoiaRPGGame
 
         private void Battlebutton_Click(object sender, EventArgs e)
         {
-            Monster selectedMonster = new Monster();
-
             if (rdoSerpent.Checked)
                 selectedMonster = serpent;
             else if (rdoCerberus.Checked)
                 selectedMonster = cerberus;
             else if (rdoDragon.Checked)
                 selectedMonster = dragon;
+
+            if (selectedCharacter == null)
+            {
+                MessageBox.Show("Please select a character!");
+                return;
+            }
+
+            if (selectedMonster == null)
+            {
+                MessageBox.Show("Please select a monster!");
+                return;
+            }
 
             FormGameMode battle = new FormGameMode(selectedCharacter, selectedMonster);
             battle.Show();
