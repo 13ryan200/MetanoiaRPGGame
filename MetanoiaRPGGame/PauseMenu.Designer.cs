@@ -40,9 +40,9 @@
             MainMenubutton.BackgroundImage = (Image)resources.GetObject("MainMenubutton.BackgroundImage");
             MainMenubutton.Font = new Font("Showcard Gothic", 15.75F);
             MainMenubutton.Image = (Image)resources.GetObject("MainMenubutton.Image");
-            MainMenubutton.Location = new Point(328, 277);
+            MainMenubutton.Location = new Point(328, 336);
             MainMenubutton.Name = "MainMenubutton";
-            MainMenubutton.Size = new Size(283, 45);
+            MainMenubutton.Size = new Size(280, 70);
             MainMenubutton.TabIndex = 2;
             MainMenubutton.Text = "Main Menu";
             MainMenubutton.UseVisualStyleBackColor = true;
@@ -53,9 +53,9 @@
             Resumebutton.BackgroundImage = (Image)resources.GetObject("Resumebutton.BackgroundImage");
             Resumebutton.Font = new Font("Showcard Gothic", 15.75F);
             Resumebutton.Image = (Image)resources.GetObject("Resumebutton.Image");
-            Resumebutton.Location = new Point(328, 152);
+            Resumebutton.Location = new Point(328, 161);
             Resumebutton.Name = "Resumebutton";
-            Resumebutton.Size = new Size(283, 46);
+            Resumebutton.Size = new Size(280, 71);
             Resumebutton.TabIndex = 0;
             Resumebutton.Text = "Resume";
             Resumebutton.UseVisualStyleBackColor = true;
@@ -78,9 +78,9 @@
             Restartbutton.BackgroundImage = (Image)resources.GetObject("Restartbutton.BackgroundImage");
             Restartbutton.Font = new Font("Showcard Gothic", 15.75F);
             Restartbutton.Image = (Image)resources.GetObject("Restartbutton.Image");
-            Restartbutton.Location = new Point(328, 213);
+            Restartbutton.Location = new Point(328, 247);
             Restartbutton.Name = "Restartbutton";
-            Restartbutton.Size = new Size(283, 46);
+            Restartbutton.Size = new Size(280, 71);
             Restartbutton.TabIndex = 4;
             Restartbutton.Text = "Restart";
             Restartbutton.UseVisualStyleBackColor = true;

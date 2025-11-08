@@ -133,6 +133,7 @@
             NextGamebutton.TabIndex = 7;
             NextGamebutton.Text = "Next Game";
             NextGamebutton.UseVisualStyleBackColor = true;
+            NextGamebutton.Click += NextGamebutton_Click;
             // 
             // FormLevelUp
             // 
