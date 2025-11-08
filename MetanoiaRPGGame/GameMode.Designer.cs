@@ -103,8 +103,8 @@
             picPlayer.ErrorImage = null;
             picPlayer.Location = new Point(133, 159);
             picPlayer.Name = "picPlayer";
-            picPlayer.Size = new Size(168, 212);
-            picPlayer.SizeMode = PictureBoxSizeMode.Zoom;
+            picPlayer.Size = new Size(168, 223);
+            picPlayer.SizeMode = PictureBoxSizeMode.StretchImage;
             picPlayer.TabIndex = 5;
             picPlayer.TabStop = false;
             // 
@@ -116,8 +116,8 @@
             picMonster.InitialImage = null;
             picMonster.Location = new Point(477, 159);
             picMonster.Name = "picMonster";
-            picMonster.Size = new Size(292, 212);
-            picMonster.SizeMode = PictureBoxSizeMode.Zoom;
+            picMonster.Size = new Size(292, 223);
+            picMonster.SizeMode = PictureBoxSizeMode.StretchImage;
             picMonster.TabIndex = 6;
             picMonster.TabStop = false;
             // 

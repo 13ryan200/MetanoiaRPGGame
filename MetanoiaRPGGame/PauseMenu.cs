@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.ComponentModel;
 
 namespace MetanoiaRPGGame
 {
     public partial class FormPauseMenu : Form
     {
-        private FormGameMode gameForm;
+        private FormGameMode game;
 
-        public FormPauseMenu(FormGameMode game)
+        public FormPauseMenu(FormGameMode gameForm)
         {
-            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
-                return;
-
             InitializeComponent();
-            gameForm = game;
+            game = gameForm;
         }
 
         private void Resumebutton_Click(object sender, EventArgs e)
         {
-            gameForm.Show();
+            game.Show();
             this.Hide();
         }
 
@@ -28,8 +24,17 @@ namespace MetanoiaRPGGame
             FrmGameLobby lobby = new FrmGameLobby();
             lobby.Show();
 
-            gameForm.Close();
+            game.Close();
             this.Close();
+        }
+
+        private void Restartbutton_Click(object sender, EventArgs e)
+        {
+            FormGameMode newBattle = new FormGameMode(game.Player.Clone(), game.Monster);
+            newBattle.Show();
+
+            game.Close();
+            this.Close(); ;
         }
     }
 }

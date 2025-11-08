@@ -32,6 +32,7 @@
             MainMenubutton = new Button();
             Resumebutton = new Button();
             PauseMenuLabel = new Label();
+            Restartbutton = new Button();
             SuspendLayout();
             // 
             // MainMenubutton
@@ -39,9 +40,9 @@
             MainMenubutton.BackgroundImage = (Image)resources.GetObject("MainMenubutton.BackgroundImage");
             MainMenubutton.Font = new Font("Showcard Gothic", 15.75F);
             MainMenubutton.Image = (Image)resources.GetObject("MainMenubutton.Image");
-            MainMenubutton.Location = new Point(318, 327);
+            MainMenubutton.Location = new Point(328, 277);
             MainMenubutton.Name = "MainMenubutton";
-            MainMenubutton.Size = new Size(309, 68);
+            MainMenubutton.Size = new Size(283, 45);
             MainMenubutton.TabIndex = 2;
             MainMenubutton.Text = "Main Menu";
             MainMenubutton.UseVisualStyleBackColor = true;
@@ -52,9 +53,9 @@
             Resumebutton.BackgroundImage = (Image)resources.GetObject("Resumebutton.BackgroundImage");
             Resumebutton.Font = new Font("Showcard Gothic", 15.75F);
             Resumebutton.Image = (Image)resources.GetObject("Resumebutton.Image");
-            Resumebutton.Location = new Point(318, 212);
+            Resumebutton.Location = new Point(328, 152);
             Resumebutton.Name = "Resumebutton";
-            Resumebutton.Size = new Size(309, 69);
+            Resumebutton.Size = new Size(283, 46);
             Resumebutton.TabIndex = 0;
             Resumebutton.Text = "Resume";
             Resumebutton.UseVisualStyleBackColor = true;
@@ -64,13 +65,26 @@
             // 
             PauseMenuLabel.AutoSize = true;
             PauseMenuLabel.BackColor = Color.Transparent;
-            PauseMenuLabel.Font = new Font("Showcard Gothic", 56.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            PauseMenuLabel.Font = new Font("Showcard Gothic", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
             PauseMenuLabel.Image = (Image)resources.GetObject("PauseMenuLabel.Image");
-            PauseMenuLabel.Location = new Point(224, 67);
+            PauseMenuLabel.Location = new Point(247, 27);
             PauseMenuLabel.Name = "PauseMenuLabel";
-            PauseMenuLabel.Size = new Size(496, 93);
+            PauseMenuLabel.Size = new Size(428, 79);
             PauseMenuLabel.TabIndex = 3;
             PauseMenuLabel.Text = "Pause Menu";
+            // 
+            // Restartbutton
+            // 
+            Restartbutton.BackgroundImage = (Image)resources.GetObject("Restartbutton.BackgroundImage");
+            Restartbutton.Font = new Font("Showcard Gothic", 15.75F);
+            Restartbutton.Image = (Image)resources.GetObject("Restartbutton.Image");
+            Restartbutton.Location = new Point(328, 213);
+            Restartbutton.Name = "Restartbutton";
+            Restartbutton.Size = new Size(283, 46);
+            Restartbutton.TabIndex = 4;
+            Restartbutton.Text = "Restart";
+            Restartbutton.UseVisualStyleBackColor = true;
+            Restartbutton.Click += Restartbutton_Click;
             // 
             // FormPauseMenu
             // 
@@ -79,6 +93,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(958, 509);
+            Controls.Add(Restartbutton);
             Controls.Add(PauseMenuLabel);
             Controls.Add(MainMenubutton);
             Controls.Add(Resumebutton);
@@ -92,5 +107,6 @@
         private Button MainMenubutton;
         private Button Resumebutton;
         private Label PauseMenuLabel;
+        private Button Restartbutton;
     }
 }

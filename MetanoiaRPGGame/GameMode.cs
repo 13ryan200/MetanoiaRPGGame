@@ -8,7 +8,7 @@ namespace MetanoiaRPGGame
 {
     public partial class FormGameMode : Form
     {
-        private Random rng = new Random();
+        private readonly Random rng = new Random();
         private Character player;
         private Monster monster;
 
@@ -19,21 +19,25 @@ namespace MetanoiaRPGGame
             this.monster = selectedMonster;
         }
 
+        public Character Player => player;
+        public Monster Monster => monster;
+
         private void FormGameMode_Load(object sender, EventArgs e)
         {
+            MessageBox.Show($"[DEBUG] Player = {player?.Name ?? "NULL"} | Monster = {monster?.Name ?? "NULL"}");
+
             if (player == null || monster == null)
             {
-                MessageBox.Show("❌ Player or Monster was not passed correctly!");
+                MessageBox.Show("Error: Player or Monster was not properly initialized.", "Game Error");
+                this.Close();
                 return;
             }
-
-            labelBattleLog.Text = $"Debug Info:\nPlayer = {player.Name}\nMonster = {monster.Name}";
 
             labelPlayerName.Text = $"Player: {player.Name}";
             labelMonsterName.Text = $"Enemy: {monster.Name}";
 
-            picPlayer.Image = GetImageByName(player.Name);
-            picMonster.Image = GetImageByName(monster.Name);
+            picPlayer.Image = LoadImage(player.Name);
+            picMonster.Image = LoadImage(monster.Name);
 
             picPlayer.SizeMode = PictureBoxSizeMode.Zoom;
             picMonster.SizeMode = PictureBoxSizeMode.Zoom;
@@ -48,15 +52,22 @@ namespace MetanoiaRPGGame
 
             UpdateUI();
         }
-
-        private Bitmap GetImageByName(string name)
+#nullable disable
+        private Image LoadImage(string name)
         {
-            if (string.IsNullOrEmpty(name))
-                return null;
-
             try
             {
+                MessageBox.Show($"🔎 Trying to load image: '{name}'", "Debug Check");
+
                 object res = Properties.Resources.ResourceManager.GetObject(name);
+
+                if (res == null)
+                {
+                    MessageBox.Show($"❌ Resource not found: '{name}'", "Missing Resource");
+                    return Properties.Resources.Fallback;
+                }
+
+                MessageBox.Show($"✅ Found '{name}' (Type: {res.GetType().Name})");
 
                 if (res is Bitmap bmp)
                     return bmp;
@@ -67,13 +78,13 @@ namespace MetanoiaRPGGame
                         return new Bitmap(ms);
                 }
 
-                MessageBox.Show($"⚠️ Resource '{name}' found but not an image (type: {res?.GetType().Name ?? "null"})");
+                MessageBox.Show($"⚠️ Image not found or invalid for: '{name}'", "Missing Resource", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return null;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"❌ Failed to load image '{name}': {ex.Message}");
-                return null;
+                MessageBox.Show($"❌ Error loading image '{name}': {ex.Message}", "Image Load Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return Properties.Resources.Fallback;
             }
         }
 
@@ -140,7 +151,7 @@ namespace MetanoiaRPGGame
                 Character oldStats = player.Clone();
                 player.GainXP(xpGained);
 
-                FormLevelUp levelUpScreen = new FormLevelUp(oldStats, player);
+                FormLevelUp levelUpScreen = new FormLevelUp(player);
                 levelUpScreen.Show();
                 this.Hide();
                 return;

@@ -5,19 +5,26 @@ namespace MetanoiaRPGGame
 {
     public partial class FormMonsterSelection : Form
     {
-        private Monster cerberus = new Monster() { Name = "Cerberus", HP = 150, Attack = 20 };
-        private Monster dragon = new Monster() { Name = "Dragon", HP = 200, Attack = 25 };
-        private Monster serpent = new Monster() { Name = "Serpent", HP = 100, Attack = 15 };
-
-        private Character selectedCharacter;
-        private Monster selectedMonster;
-
+        public Character selectedCharacter;
+        public Monster selectedMonster;
+#nullable disable
         public FormMonsterSelection(Character selectedCharacter)
         {
             InitializeComponent();
             this.selectedCharacter = selectedCharacter;
-            MessageBox.Show($"✅ Received Character: {selectedCharacter?.Name ?? "NULL"}");
+
+            picCerberus.Image = Properties.Resources.Cerberus;
+            picDragon.Image = Properties.Resources.Dragon;  
+            picSerpent.Image = Properties.Resources.Serpent;  
+
+            picCerberus.SizeMode = PictureBoxSizeMode.Zoom;
+            picDragon.SizeMode = PictureBoxSizeMode.Zoom;
+            picSerpent.SizeMode = PictureBoxSizeMode.Zoom;
         }
+
+        private Monster cerberus = new Monster() { Name = "Cerberus", HP = 150, Attack = 25 };
+        private Monster dragon = new Monster() { Name = "Dragon", HP = 200, Attack = 30 };
+        private Monster serpent = new Monster() { Name = "Serpent", HP = 100, Attack = 15 };
 
         private void picSerpent_Click(object sender, EventArgs e)
         {
@@ -48,20 +55,14 @@ namespace MetanoiaRPGGame
 
         private void Battlebutton_Click(object sender, EventArgs e)
         {
+            Monster selectedMonster = new Monster();
+
             if (rdoSerpent.Checked)
                 selectedMonster = serpent;
             else if (rdoCerberus.Checked)
                 selectedMonster = cerberus;
             else if (rdoDragon.Checked)
                 selectedMonster = dragon;
-
-            if (selectedMonster == null)
-            {
-                MessageBox.Show("Please select a monster before continuing!");
-                return;
-            }
-
-            MessageBox.Show($"✅ Selected Monster: {selectedMonster.Name}");
 
             FormGameMode battle = new FormGameMode(selectedCharacter, selectedMonster);
             battle.Show();

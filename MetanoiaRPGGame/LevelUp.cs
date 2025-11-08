@@ -5,31 +5,32 @@ namespace MetanoiaRPGGame
 {
     public partial class FormLevelUp : Form
     {
-        private Character playerBefore;
-        private Character playerAfter;
+        private Character player;
 
-        public FormLevelUp(Character playerBefore, Character playerAfter)
+        public FormLevelUp(Character leveledUpPlayer)
         {
             InitializeComponent();
-            this.playerBefore = playerBefore;
-            this.playerAfter = playerAfter;
+            player = leveledUpPlayer;
         }
 
         private void FormLevelUp_Load(object sender, EventArgs e)
         {
-            lblName.Text = $"🎖 {playerAfter.Name} Leveled Up!";
-            lblLevel.Text = $"Level: {playerBefore.Level} → {playerAfter.Level}";
-            lblHP.Text = $"HP: {playerBefore.HP} → {playerAfter.HP}";
-            lblAttack.Text = $"Attack: {playerBefore.Attack} → {playerAfter.Attack}";
-            lblSpecial.Text = $"Special: {playerBefore.SpecialAttack} → {playerAfter.SpecialAttack}";
-            lblMessage.Text = "You’ve become stronger! Continue your adventure!";
+            lblName.Text = $"Name: {player.Name}";
+            lblLevel.Text = $"Level: {player.Level}/20";
+            lblHP.Text = $"HP: {player.HP}";
+            lblAttack.Text = $"Attack: {player.Attack}";
+            lblSpecial.Text = $"Special Attack: {player.SpecialAttack}";
+
+            if (player.Level >= 20)
+                lblMessage.Text = $"{player.Name} reached the MAX LEVEL!";
+            else
+                lblMessage.Text = $"You’re stronger now! Next level in {player.XPToNextLevel - player.XP} XP.";
         }
 
         private void NextGamebutton_Click(object sender, EventArgs e)
         {
-            FormMonsterSelection monsterSelect = new FormMonsterSelection(playerAfter);
-            monsterSelect.Show();
-
+            FormCharacterSelection menu = new FormCharacterSelection();
+            menu.Show();
             this.Close();
         }
     }

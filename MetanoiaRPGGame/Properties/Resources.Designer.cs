@@ -93,6 +93,16 @@ namespace MetanoiaRPGGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Fallback {
+            get {
+                object obj = ResourceManager.GetObject("Fallback", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Forest_of_Pixels_by_bunnsP_on_DeviantArt {
             get {
                 object obj = ResourceManager.GetObject("Forest of Pixels by bunnsP on DeviantArt", resourceCulture);

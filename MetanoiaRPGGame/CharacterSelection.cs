@@ -8,16 +8,19 @@ namespace MetanoiaRPGGame
         public FormCharacterSelection()
         {
             InitializeComponent();
+
+            picKnight.Image = Properties.Resources.Knight;
+            picPriest.Image = Properties.Resources.Priest;
+            picMage.Image = Properties.Resources.Mage;
+
+            picKnight.SizeMode = PictureBoxSizeMode.Zoom;
+            picPriest.SizeMode = PictureBoxSizeMode.Zoom;
+            picMage.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
-        private Character knight = new Character()
-        { Name = "Knight", HP = 100, Attack = 30, SpecialAttack = 50 };
-
-        private Character priest = new Character()
-        { Name = "Priest", HP = 100, Attack = 20, SpecialAttack = 70 };
-
-        private Character mage = new Character()
-        { Name = "Mage", HP = 100, Attack = 25, SpecialAttack = 90 };
+        private Character knight = new Character() { Name = "Knight", HP = 100, Attack = 30, SpecialAttack = 50 };
+        private Character priest = new Character() { Name = "Priest", HP = 100, Attack = 20, SpecialAttack = 70 };
+        private Character mage = new Character() { Name = "Mage", HP = 100, Attack = 20, SpecialAttack = 80 };
 
         private void picKnight_Click(object sender, EventArgs e)
         {
@@ -48,7 +51,7 @@ namespace MetanoiaRPGGame
 
         private void Nextbutton_Click(object sender, EventArgs e)
         {
-            Character selectedCharacter = null;
+            Character selectedCharacter = new Character();
 
             if (rdoKnight.Checked)
                 selectedCharacter = knight;
@@ -56,14 +59,6 @@ namespace MetanoiaRPGGame
                 selectedCharacter = priest;
             else if (rdoMage.Checked)
                 selectedCharacter = mage;
-
-            if (selectedCharacter == null)
-            {
-                MessageBox.Show("Please select a character before continuing!");
-                return;
-            }
-
-            MessageBox.Show($"✅ Passing Character: {selectedCharacter.Name}");
 
             FormMonsterSelection monsterSelect = new FormMonsterSelection(selectedCharacter);
             monsterSelect.Show();

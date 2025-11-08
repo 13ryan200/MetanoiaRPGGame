@@ -19,7 +19,6 @@ namespace MetanoiaRPGGame
 
         private void LobbyButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("You have been defeated! Returning to the main menu.", "Defeat", MessageBoxButtons.OK, MessageBoxIcon.Information);
             FrmGameLobby lobby = new FrmGameLobby();
             lobby.Show();
             this.Close();
