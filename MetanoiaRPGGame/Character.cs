@@ -34,19 +34,13 @@ namespace MetanoiaRPGGame
 
         public void GainMana(int amount)
         {
-            if (Level >= MaxLevel)
-                return;
-
-            XP += amount;
-            while (XP >= XPToNextLevel && Level < MaxLevel)
-            {
-                LevelUp();
-            }
+            Mana += amount;
+            if (Mana > MaxMana) Mana = MaxMana;
         }
 
         public void UseMana()
         {
-            Mana = Math.Max(0, Mana + 50);
+            Mana = Math.Max(0, Mana + 100);
         }
 
         public void GainXP(int amount)
