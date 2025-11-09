@@ -19,7 +19,7 @@ namespace MetanoiaRPGGame
         public int Mana { get; set; } = 20;
         public int MaxMana { get; set; } = 100;
 
-        public bool CanUseSpecial => Mana >= 60;
+        public bool CanUseSpecial => Mana >= 100;
 
         public override string ToString()
         {

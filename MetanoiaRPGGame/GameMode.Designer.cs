@@ -145,7 +145,7 @@
             // 
             pbarMonsterHP.BackColor = Color.CadetBlue;
             pbarMonsterHP.ForeColor = Color.Red;
-            pbarMonsterHP.Location = new Point(693, 87);
+            pbarMonsterHP.Location = new Point(693, 109);
             pbarMonsterHP.Name = "pbarMonsterHP";
             pbarMonsterHP.Size = new Size(170, 17);
             pbarMonsterHP.TabIndex = 9;
@@ -204,7 +204,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Gainsboro;
             label1.Font = new Font("Showcard Gothic", 12F);
-            label1.Location = new Point(68, 85);
+            label1.Location = new Point(65, 109);
             label1.Name = "label1";
             label1.Size = new Size(37, 20);
             label1.TabIndex = 15;
@@ -215,7 +215,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Gainsboro;
             label2.Font = new Font("Showcard Gothic", 12F);
-            label2.Location = new Point(68, 109);
+            label2.Location = new Point(65, 87);
             label2.Name = "label2";
             label2.Size = new Size(40, 20);
             label2.TabIndex = 16;
@@ -226,7 +226,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Gainsboro;
             label3.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(650, 84);
+            label3.Location = new Point(650, 106);
             label3.Name = "label3";
             label3.Size = new Size(37, 20);
             label3.TabIndex = 17;
